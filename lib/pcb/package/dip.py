@@ -56,19 +56,15 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 	def fn (o):
 		o.view (x, y, angle)
 
-		if o.name == 'top' or o.name == 'bottom':
-			draw_pads (o, nh, W, s, d)
-
-		elif o.name == 'power':
-			draw_power (o, nh, W, s, d, vcc)
-
-		elif o.name == 'ground':
-			draw_power (o, nh, W, s, d, gnd)
-
-		elif o.name == 'drill':
-			for i in range (0, nh):
-				o.hole (0, -s * i, h)
-				o.hole (W, -s * i, h)
+		match o.name:
+			case 'top':	draw_pads (o, nh, W, s, d)
+			case 'bottom':	draw_pads (o, nh, W, s, d)
+			case 'power':	draw_power (o, nh, W, s, d, vcc)
+			case 'ground':	draw_power (o, nh, W, s, d, gnd)
+			case 'drill':
+				for i in range (0, nh):
+					o.hole (0, -s * i, h)
+					o.hole (W, -s * i, h)
 
 	return fn
 
