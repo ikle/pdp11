@@ -58,10 +58,10 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 	vcc = pcb.chip.select_pins (pins, 'VCC')
 	gnd = pcb.chip.select_pins (pins, 'GND')
 
-	def fn (o):
+	def fn (o, layer):
 		o.view (x, y, angle)
 
-		match o.name:
+		match layer:
 			case 'top':	draw_pads  (o, nh, W, s, d)
 			case 'bottom':	draw_pads  (o, nh, W, s, d)
 			case 'power':	draw_power (o, nh, W, s, d, vcc)
