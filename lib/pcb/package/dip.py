@@ -50,14 +50,14 @@ def draw_holes (o, nh, W, s, d):
 		o.hole (0, -s * i, d)
 		o.hole (W, -s * i, d)
 
-def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
+def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
 	(x, y) = O
 	(nh, W) = (n // 2, w * s)
 
-	vcc = pcb.chip.select_pins (pins, 'VCC')
-	gnd = pcb.chip.select_pins (pins, 'GND')
+	vcc = pcb.chip.select_pins (o.pins, 'VCC')
+	gnd = pcb.chip.select_pins (o.pins, 'GND')
 
-	def fn (o, layer):
+	def draw (o, layer):
 		o.view (x, y, angle)
 
 		match layer:
@@ -67,9 +67,6 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 			case 'ground':	draw_power (o, nh, W, s, d, gnd)
 			case 'drill':	draw_holes (o, nh, W, s, h)
 
-	return fn
-
-def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
+	o.draw   = draw
 	o.anchor = anchor (O, n, w, angle, s)
-	o.draw   = draw   (O, n, w, angle, o.pins, s, d, h)
 
