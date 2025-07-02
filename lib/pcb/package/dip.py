@@ -51,9 +51,8 @@ def draw_holes (o, nh, W, s, d):
 		o.hole (W, -s * i, d)
 
 def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
-	nh = n // 2
 	(x, y) = O
-	(W, H) = (w * s, (nh - 1) * s)
+	(nh, W) = (n // 2, w * s)
 
 	vcc = pcb.chip.select_pins (pins, 'VCC')
 	gnd = pcb.chip.select_pins (pins, 'GND')
