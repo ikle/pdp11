@@ -30,6 +30,12 @@ def draw_holes (o, nh, W, s, d):
 		o.hole (0, -s * i, d)
 		o.hole (W, -s * i, d)
 
+def draw_silk (o, nh, W, s):
+	(W, H, r) = (W - s, (nh - 1) * s, .4 * s)
+
+	o.plot (['m', s / 2, 0, 'v', -H, 'h', W, 'v', H, 'h', r - W / 2,
+		 'a', -r, 0, -r, -r, 'a', 0, r, -r, r, 'c'])
+
 def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
 	(nh, wd, sh, W) = (n // 2, w * 2, s / 2, w * s)
 	(Lx, Ly) = O
@@ -60,6 +66,7 @@ def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
 			case 'power':	draw_power (o, nh, W, s, d, vcc)
 			case 'ground':	draw_power (o, nh, W, s, d, gnd)
 			case 'drill':	draw_holes (o, nh, W, s, h)
+			case 'silk':	draw_silk  (o, nh, W, s)
 
 	o.anchor = anchor
 	o.draw   = draw
