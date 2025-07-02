@@ -45,6 +45,11 @@ def draw_power (o, nh, W, s, d, contacts):
 		if not (n - i) in contacts:
 			o.hole (W, -s * i, d)
 
+def draw_holes (o, nh, W, s, d):
+	for i in range (0, nh):
+		o.hole (0, -s * i, d)
+		o.hole (W, -s * i, d)
+
 def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 	nh = n // 2
 	(x, y) = O
@@ -61,10 +66,7 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 			case 'bottom':	draw_pads (o, nh, W, s, d)
 			case 'power':	draw_power (o, nh, W, s, d, vcc)
 			case 'ground':	draw_power (o, nh, W, s, d, gnd)
-			case 'drill':
-				for i in range (0, nh):
-					o.hole (0, -s * i, h)
-					o.hole (W, -s * i, h)
+			case 'drill':	draw_holes (o, nh, W, s, h)
 
 	return fn
 
