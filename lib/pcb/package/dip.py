@@ -30,12 +30,12 @@ def anchor (O, n, w, angle = 0, s = 2.54):
 	return fn
 
 def draw_pads (o, nh, W, s, d):
-	o.square (0, 0, d)
-	o.disc   (W, 0, d)
+	o.pad  (0, 0, d, d)
+	o.opad (W, 0, d)
 
 	for i in range (1, nh):
-		o.disc (0, -s * i, d)
-		o.disc (W, -s * i, d)
+		o.opad (0, -s * i, d)
+		o.opad (W, -s * i, d)
 
 def draw_power (o, nh, W, s, d, contacts):
 	for i in range (0, nh):
