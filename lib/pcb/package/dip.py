@@ -29,6 +29,14 @@ def anchor (O, n, w, angle = 0, s = 2.54):
 
 	return fn
 
+def draw_pads (o, nh, W, s, d):
+	o.square (0, 0, d)
+	o.disc   (W, 0, d)
+
+	for i in range (1, nh):
+		o.disc (0, -s * i, d)
+		o.disc (W, -s * i, d)
+
 def draw_power (o, nh, W, s, d, contacts):
 	for i in range (0, nh):
 		if not (1 + i) in contacts:
@@ -49,12 +57,7 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 		o.view (x, y, angle)
 
 		if o.name == 'top' or o.name == 'bottom':
-			o.square (0, 0, d)
-			o.disc   (W, 0, d)
-
-			for i in range (1, nh):
-				o.disc (0, -s * i, d)
-				o.disc (W, -s * i, d)
+			draw_pads (o, nh, W, s, d)
 
 		elif o.name == 'power':
 			draw_power (o, nh, W, s, d, vcc)
