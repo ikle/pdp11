@@ -29,7 +29,7 @@ def anchor (O, n, w, angle = 0, s = 2.54):
 
 	return fn
 
-def draw (O, n, w, angle, pins, s = 2.54, d = 1.2, h = 0.6):
+def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 	nh = n // 2
 	(x, y) = O
 	(W, H) = (w * s, (nh - 1) * s)
@@ -71,7 +71,7 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.2, h = 0.6):
 
 	return fn
 
-def init (o, O, n, w, angle = 0, s = 2.54, d = 1.2, h = 0.6):
+def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
 	o.anchor = anchor (O, n, w, angle, s)
 	o.draw   = draw   (O, n, w, angle, o.pins, s, d, h)
 
