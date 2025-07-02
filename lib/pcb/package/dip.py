@@ -51,14 +51,14 @@ def draw_holes (o, nh, W, s, d):
 		o.hole (W, -s * i, d)
 
 def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
-	(x, y) = O
 	(nh, W) = (n // 2, w * s)
+	(Lx, Ly) = O
 
 	vcc = pcb.chip.select_pins (o.pins, 'VCC')
 	gnd = pcb.chip.select_pins (o.pins, 'GND')
 
 	def draw (o, layer):
-		o.view (x, y, angle)
+		o.view (Lx, Ly, angle)
 
 		match layer:
 			case 'top':	draw_pads  (o, nh, W, s, d)
