@@ -29,6 +29,14 @@ def anchor (O, n, w, angle = 0, s = 2.54):
 
 	return fn
 
+def draw_power (o, nh, W, s, d, contacts):
+	for i in range (0, nh):
+		if not (1 + i) in contacts:
+			o.hole (0, -s * i, d)
+
+		if not (n - i) in contacts:
+			o.hole (W, -s * i, d)
+
 def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 	nh = n // 2
 	(x, y) = O
@@ -49,20 +57,10 @@ def draw (O, n, w, angle, pins, s = 2.54, d = 1.3, h = 0.7):
 				o.disc (W, -s * i, d)
 
 		elif o.name == 'power':
-			for i in range (0, nh):
-				if not (1 + i) in vcc:
-					o.hole (0, -s * i, d)
-
-				if not (n - i) in vcc:
-					o.hole (W, -s * i, d)
+			draw_power (o, nh, W, s, d, vcc)
 
 		elif o.name == 'ground':
-			for i in range (0, nh):
-				if not (1 + i) in gnd:
-					o.hole (0, -s * i, d)
-
-				if not (n - i) in gnd:
-					o.hole (W, -s * i, d)
+			draw_power (o, nh, W, s, d, gnd)
 
 		elif o.name == 'drill':
 			for i in range (0, nh):
