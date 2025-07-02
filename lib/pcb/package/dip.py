@@ -9,26 +9,6 @@
 
 import pcb, pcb.chip, pcb.grid
 
-def anchor (O, n, w, angle = 0, s = 2.54):
-	(nh, wd, sh) = (n // 2, w * 2, s / 2)
-	(Lx, Ly) = O
-	(Rx, Ry) = (Lx + w * s, Ly - (nh - 1) * s)
-
-	AL = pcb.rotate (O, Lx, Ly - s , angle)
-	BL = pcb.rotate (O, Rx, Ly - sh, angle)
-
-	R  = pcb.rotate (O, Rx, Ry     , angle)
-	AR = pcb.rotate (O, Rx, Ry + s , angle)
-	BR = pcb.rotate (O, Lx, Ry + sh, angle)
-
-	def fn (i, j = 0):
-		if i <= nh:
-			return pcb.grid.anchor (O, AL, BL, wd, i - 1, j)
-
-		return pcb.grid.anchor (R, AR, BR, wd, i - nh - 1, j)
-
-	return fn
-
 def draw_pads (o, nh, W, s, d):
 	o.pad  (0, 0, d, d)
 	o.opad (W, 0, d)
@@ -51,8 +31,22 @@ def draw_holes (o, nh, W, s, d):
 		o.hole (W, -s * i, d)
 
 def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
-	(nh, W) = (n // 2, w * s)
+	(nh, wd, sh, W) = (n // 2, w * 2, s / 2, w * s)
 	(Lx, Ly) = O
+	(Rx, Ry) = (Lx + W, Ly - (nh - 1) * s)
+
+	AL = pcb.rotate (O, Lx, Ly - s , angle)
+	BL = pcb.rotate (O, Rx, Ly - sh, angle)
+
+	R  = pcb.rotate (O, Rx, Ry     , angle)
+	AR = pcb.rotate (O, Rx, Ry + s , angle)
+	BR = pcb.rotate (O, Lx, Ry + sh, angle)
+
+	def anchor (i, j = 0):
+		if i <= nh:
+			return pcb.grid.anchor (O, AL, BL, wd, i - 1, j)
+
+		return pcb.grid.anchor (R, AR, BR, wd, i - nh - 1, j)
 
 	vcc = pcb.chip.select_pins (o.pins, 'VCC')
 	gnd = pcb.chip.select_pins (o.pins, 'GND')
@@ -67,6 +61,6 @@ def init (o, O, n, w, angle = 0, s = 2.54, d = 1.3, h = 0.7):
 			case 'ground':	draw_power (o, nh, W, s, d, gnd)
 			case 'drill':	draw_holes (o, nh, W, s, h)
 
+	o.anchor = anchor
 	o.draw   = draw
-	o.anchor = anchor (O, n, w, angle, s)
 
