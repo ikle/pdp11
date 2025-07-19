@@ -20,6 +20,10 @@ class DIP20 (Package):
 	def __init__ (o, O, angle = 0):
 		pcb.package.dip.init (o, O, 20, 3, angle)
 
+class DIP24 (Package):
+	def __init__ (o, O, angle = 0):
+		pcb.package.dip.init (o, O, 24, 3, angle)
+
 class DIP40 (Package):
 	def __init__ (o, O, angle = 0):
 		pcb.package.dip.init (o, O, 40, 6, angle)
