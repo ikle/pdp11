@@ -19,7 +19,7 @@ class P16V8 (pcb.package.DIP20):
 		'CLK': 1, 'GND': 10, 'OE': 11, 'VCC': 20
 	}
 
-class P22V10 (pcb.package.DIP20):
+class P22V10 (pcb.package.DIP24):
 	pins = {
 		'D0':  2, 'D1':  3, 'D2':  4, 'D3':  5, 'D4':  6,
 		'D5':  7, 'D6':  8, 'D7':  9, 'D8': 10, 'D9': 11,
