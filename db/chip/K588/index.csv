@@ -1,0 +1,19 @@
+type,unit,class,parent,title,notes
+VU2,1,CMU,,Control Memory Unit,Mask-Programmed Control Unit for ALU and SBC
+VS2,1,ALU,,Arithmetic Logic Unit,
+VG1,1,SBC,,System Bus Controller,Q-Bus CPU Interface
+VU2-0001,1,CMU,K588/VU2,Control Memory 1,Single Operand Instructions + Double Operand Instructions
+VU2-0002,1,CMU,K588/VU2,Control Memory 2,Condition Code Operators + Branches + Base Extensions
+VU2-0003,1,CMU,K588/VU2,Control Memory 3,Extended Instruction Set (Software Multiplier)
+VU2-0004,1,CMU,K588/VU2,Control Memory 4,JMP + Subroutines + Miscellaneous Control Instructions
+VU2-0005,1,CMU,K588/VU2,Control Memory 5,System Bus Control (Software Multiplier)
+VU2-0006,1,CMU,K588/VU2,Control Memory 6,Extended Instruction Set (Harware Multiplier)
+VU2-0007,1,CMU,K588/VU2,Control Memory 7,System Bus Control (Harware Multiplier)
+VR2,1,MU,,Multiplier Unit,
+VA1,1,TRT,,Bi-Directional Bus Transceiver with Parity Control,
+IR1,1,RG,,Register,Bus Register with Parity Control
+VT1,1,AS,,Address Selector,Q-Bus I/O Register Address Selector
+VG2,1,MC,,Memory Controller,Q-Bus RAM/ROM Interface
+VN1,1,PIC,,Programmable Interrupt Controller,Q-Bus PIC
+VI1,1,PIT,,Programmable Interval Timer,Q-Bus PIT
+VT2,1,DMA,,Direct Memory Access Controller,Q-Bus DMA Controller

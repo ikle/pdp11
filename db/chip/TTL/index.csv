@@ -1,0 +1,8 @@
+type,unit,class,parent,title,notes
+244,1,BUF,,Octal Buffer,
+244,2,BUF,,Octal Buffer,
+245,1,BUS,,Octal Transceiver,
+373,1,REG,,Octal Transparent Latch,
+374,1,REG,,Octal D-Type Flip-Flop,
+573,1,REG,,Octal Transparent Latch,Flow Though Pinout
+574,1,REG,,Octal D-Type Flip-Flop,Flow Though Pinout
