@@ -1,4 +1,4 @@
-unit,signal,type,group,A
+unit,signal,type,group,pin
 0,GND1,P,,9
 0,GND2,P,,25
 0,VCC1,P,,8
