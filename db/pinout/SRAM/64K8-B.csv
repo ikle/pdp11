@@ -17,8 +17,8 @@ unit,signal,type,group,pin
 1,A13,I,L0,4
 1,A14,I,L0,11
 1,A15,I,L0,7
-1,CS1,NI,L1,30
-1,CS2,I,L1,6
+1,CE1,NI,L1,30
+1,CE2,I,L1,6
 1,OE,NI,L1,32
 1,WE,NI,L1,5
 1,D0,OZ,R0,21
