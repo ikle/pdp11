@@ -1,4 +1,4 @@
-key,pc,class,pinout,footprint,vcc
+family,pc,class,pinout,footprint,vcc
 AS7C1024B,J,SRAM,P32-128K8-S,SOJ32-400,50
 AS7C1024B,ST,SRAM,P32-128K8-T,TSOP32-0813,50
 AS7C1024B,T,SRAM,P32-128K8-T,TSOP32-0820,50
